@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind url("https://cdn.tailwindcss.com");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial sans-serif;
+    font-size: 16px;
+    color: black;
+}
+body {
+    background-color: white;
+
+}
