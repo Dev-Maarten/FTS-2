@@ -10,3 +10,25 @@ if (mysqli_connect_errno()) {
     die("connection failed: " . mysqli_connect_error());
 
 }
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$query = "DELETE FROM festivals WHERE id = ?";
+$stmt = mysqli_prepare($db, $query);
+if ($stmt) {
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    if (mysqli_stmt_execute($stmt)) {
+        // Redirect after successful deletion
+        header('Location: /admin/admin.php');
+        exit;
+    } else {
+        echo "Error executing query: " . mysqli_stmt_error($stmt);
+    }
+    mysqli_stmt_close($stmt);
+} else {
+    echo "Error preparing query: " . mysqli_error($db);
+}
+
+
+mysqli_close($db);

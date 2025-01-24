@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS Festivals(
     imagepath VARCHAR(255)
 );
 
+
+
 CREATE TABLE IF NOT EXISTS reviews(
     id INT AUTO_INCREMENT PRIMARY KEY,
     festival_id INT,

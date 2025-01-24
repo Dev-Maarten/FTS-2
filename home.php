@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php require "navbar.php";
 define('DATABASE_HOST', 'localhost');
 define('DATABASE_USER', 'root');
@@ -12,7 +14,6 @@ if (mysqli_connect_errno()) {
 
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,20 +23,14 @@ if (mysqli_connect_errno()) {
     <title>FTS</title>
 </head>
 <body>
-<? $query = 'SELECT name FROM festivals where id = 3';
-$result = mysqli_query($db, $query);
-
-if(!$result) {
-    die("Error: " . mysqli_error($db));
-}
-?>
-<div class="container">
+<div>
     <h1 class="text-bold text-2xl text-center mb-4">
     </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2mdg:grid-cols-3 gap-6 w-1/3">
+
         <?php
-        $query = 'SELECT name, price, location FROM festivals where id in (2,3)';
+        $query = 'SELECT id, name, price, location, imagepath FROM festivals where id > 0';
         $result = mysqli_query($db, $query);
 
         $num_results = mysqli_num_rows($result);
@@ -45,20 +40,23 @@ if(!$result) {
         }
 
         if($result && $num_results > 0);
-            while ($rs = mysqli_fetch_array($result)) ;
+            while ($rs = mysqli_fetch_array($result))
             {
-                print $rs;
-                echo "<div class=\"shadow-lg bg-white rounded overflow-hidden\"> ";
-                // echo "<img src=\"" . htmlspecialchars($rs['imagepath']) . " class=\"w-full object-cover\">";
+                echo "<div class=\"container w-1/3 shadow-lg bg-white rounded overflow-hidden\"> ";
+                echo "<a href=\"festivalpage.php?id=" . ($rs['id']) . "\">";
+                 echo "<img src=\"" . $rs['imagepath'] . "\" class=\"w-full object-cover\">";
 
                 echo "<div class=\"p-4\">";
                 echo "  <h2 class=\"text-2xl font-bold mb-3\">" . $rs['name'];
                 echo "    </h2>";
                 echo "    <p class=\"text-2xl font-bold mb-3\">" . $rs['price'];
                 echo "    <p class=\"text-2xl font-bold mb-3\">" . $rs['location'];
-
-        }
+                echo "</div>";
+                echo "</div>";
+                echo "</a>";
+            }
 ?>
             </div>
         </div>
 </body>
+</html>

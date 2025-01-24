@@ -36,7 +36,7 @@ if (mysqli_connect_errno()) {
     <?php if ($_SERVER['REQUEST_URI'] == 'website-folder/admin/admin.php/')
     ?>
 
-    <section class="bg-gray-500">
+    <section class="bg-gray-200">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl text-white font-bold mb-4">add a new festival</h2>
             <?php if (isset($create_festival_error)){ ?>
@@ -47,13 +47,12 @@ if (mysqli_connect_errno()) {
 
                 <div class="mb-4">
                     <label for="name" class="block mb-2>">name</label>
-                    <input type="text" id="name" name="name" required
-                           class="w-1/2 p-2 border rounded ">
+                    <input type="text" id="name" name="name" required class="w-full p-2 border rounded">
                 </div>
 
                 <div class="mb-4">
-                    <label for="location" class="block mb-2>">locatie</label>
-                    <input type="text" id="location" name="location" required class="w-1/2 p-2 border-rounded">
+                    <label for="location" class="block mb-2>">location</label>
+                    <input type="text" id="location" name="location" required class="w-full p-2 border-rounded">
                 </div>
 
                 <div class="mb-4">
@@ -67,13 +66,20 @@ if (mysqli_connect_errno()) {
                 </div>
 
                 <div class="mb-4">
-                    <label for="price" class="block mb-2>">prijs</label>
+                    <label for="price" class="block mb-2>">price</label>
                     <input type="text" id="price" name="price" required class="w-full p-2 border-rounded">
                 </div>
 
                 <div class="mb-4">
                     <label for="image" class="block mb-2>">image</label>
-                    <input type="file" id="image" name="image" class="w-full p-2 border-rounded">
+                    <input type="file" id="image" name="image" class="w-full p-2 border-rounded" accept="image/*" required>
+
+                </div>
+
+                <div class="mb-4">
+                    <label for="description" class="block mb-2>">description</label>
+                    <input type="text" id="description" name="description" class="w-full p-2 border-rounded" accept="image/*" required>
+
                 </div>
 
                 <button type="submit" name="create_new_festival"  class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
